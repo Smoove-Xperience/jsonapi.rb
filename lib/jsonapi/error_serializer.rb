@@ -15,6 +15,10 @@ module JSONAPI
       end
     end
 
+    attribute :meta do |object|
+      object.try(:last).try(:except, :error)
+    end
+
     # Remap the root key to `errors`
     #
     # @return [Hash]
